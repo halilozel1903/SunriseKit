@@ -1,0 +1,16 @@
+{
+  "results": {
+    "sunrise": "1970-01-01T01:00:01+01:00",
+    "sunset": "1970-01-01T01:00:01+01:00",
+    "solar_noon": "2026-12-21T11:55:33+01:00",
+    "day_length": 0,
+    "civil_twilight_begin": "1970-01-01T01:00:01+01:00",
+    "civil_twilight_end": "1970-01-01T01:00:01+01:00",
+    "nautical_twilight_begin": "2026-12-21T10:58:21+01:00",
+    "nautical_twilight_end": "2026-12-21T12:52:45+01:00",
+    "astronomical_twilight_begin": "2026-12-21T07:37:11+01:00",
+    "astronomical_twilight_end": "2026-12-21T16:13:54+01:00"
+  },
+  "status": "OK",
+  "tzid": "Arctic/Longyearbyen"
+}
