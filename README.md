@@ -34,7 +34,7 @@ today.timeline.fraction(at: .now)               // 0.74 (of the local day)
 
 ## Screenshots
 
-Captured by CI from the example app, *Daybreak*, on an Apple Watch and an iPhone simulator. Every scene loads **today's real sun times from the live sunrise-sunset.org API** for real cities and shows them at the **real current time** of the CI run: the sun's position on the arc, the phase and the countdown are whatever they were when the job ran (so a watch capture can just as well show night as daylight). Nothing is fixed or simulated; if the API cannot be reached, the job fails instead of saving a capture.
+Captured by CI from the example app, *Daybreak*, on an Apple Watch and an iPhone simulator. Every scene loads **today's real sun times from the live sunrise-sunset.org API** for real cities and shows them at the **real current time** of the CI run: the sun's position on the arc, the phase and the countdown are whatever they were when the job ran (so a watch capture can just as well show night as daylight). Only the iPhone status bar is set to 9:41; the times inside the app are the real local times. If the API cannot be reached, the job fails instead of saving a capture.
 
 | Watch: sun arc | Watch: golden hour |
 | :---: | :---: |

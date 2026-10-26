@@ -4,7 +4,7 @@
 #                                         --iphone <Scheme> <bundle id> <scene> [<scene> ...]
 # Writes docs/screenshots/<device>-<scene>.png, for example watch-arc.png and iphone-cities.png.
 # The scenes load real data from the live sunrise-sunset.org API (no fallback data) and use the real
-# current time, so the status bar keeps the simulator's real clock instead of a fixed 9:41.
+# current time; only the iPhone status bar shows a fixed 9:41.
 # Each app writes tmp/screenshot-ready into its container once the scene is on screen; the script
 # waits for that marker and exits with an error instead of keeping a blank, stale or home-screen
 # capture.
@@ -154,7 +154,7 @@ capture() {
   xcrun simctl boot "$udid" || true
   xcrun simctl bootstatus "$udid" -b
   if [ "$device" = "iphone" ]; then
-    xcrun simctl status_bar "$udid" override --batteryState charged --batteryLevel 100 --cellularBars 4 --wifiBars 3
+    xcrun simctl status_bar "$udid" override --time "9:41" --batteryState charged --batteryLevel 100 --cellularBars 4 --wifiBars 3
     xcrun simctl ui "$udid" appearance dark
   fi
   xcrun simctl install "$udid" "$app"
