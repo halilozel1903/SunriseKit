@@ -2,7 +2,7 @@ import SunriseKit
 import SunriseUI
 import SwiftUI
 
-/// Today's golden hour as a card, the blue hour, and every twilight phase.
+/// Today's golden hour as a card and every twilight phase, with the blue hour below them.
 struct WatchGoldenView: View {
     @Environment(SunStore.self) private var store
 
@@ -12,13 +12,11 @@ struct WatchGoldenView: View {
             let now = context.date
             if let times = store.day(in: city, at: now) {
                 ScrollView {
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text(city.name)
-                            .font(.system(size: 15, weight: .semibold))
-                        GoldenHourCard(times: times, timeZone: city.timeZone, now: now)
+                    VStack(alignment: .leading, spacing: 6) {
+                        GoldenHourCard(cityName: city.name, times: times, timeZone: city.timeZone, now: now)
+                        TwilightList(times: times, timeZone: city.timeZone)
                         WindowRow(title: "Blue hour", symbol: "sun.horizon", color: SunPalette.blue,
                                   windows: times.blueHour, timeZone: city.timeZone)
-                        TwilightList(times: times, timeZone: city.timeZone)
                     }
                     .padding(.horizontal, 2)
                 }
@@ -32,6 +30,7 @@ struct WatchGoldenView: View {
 
 /// The morning and evening golden hours, with the one that is on now or next highlighted.
 struct GoldenHourCard: View {
+    let cityName: String
     let times: SunTimes
     let timeZone: TimeZone
     let now: Date
@@ -39,9 +38,16 @@ struct GoldenHourCard: View {
     var body: some View {
         let golden = times.goldenHour
         let focus = golden.current(orNextAfter: now)
-        VStack(alignment: .leading, spacing: 4) {
-            Label("Golden hour", systemImage: "sun.haze.fill")
-                .font(.system(size: 14, weight: .semibold))
+        VStack(alignment: .leading, spacing: 2) {
+            HStack(alignment: .firstTextBaseline) {
+                Label("Golden hour", systemImage: "sun.haze.fill")
+                    .font(.system(size: 14, weight: .semibold))
+                Spacer(minLength: 4)
+                Text(cityName)
+                    .font(.system(size: 11, weight: .semibold))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.7)
+            }
             if golden.isEmpty {
                 Text(times.sunStatus == .midnightSun ? "The sun stays high all day." : "The sun stays low all day.")
                     .font(.system(size: 12))
@@ -61,7 +67,8 @@ struct GoldenHourCard: View {
             }
         }
         .foregroundStyle(.black)
-        .padding(8)
+        .padding(.horizontal, 8)
+        .padding(.vertical, 6)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(
             LinearGradient(colors: [SunPalette.sun, SunPalette.golden], startPoint: .topLeading, endPoint: .bottomTrailing),
@@ -117,8 +124,8 @@ struct TwilightList: View {
     let timeZone: TimeZone
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            Text("TWILIGHT")
+        VStack(alignment: .leading, spacing: 2) {
+            Text("TWILIGHT · DAWN · DUSK")
                 .font(.system(size: 11, weight: .semibold))
                 .foregroundStyle(.secondary)
             row("Astronomical", SunPhase.astronomicalTwilight, times.astronomicalTwilightBegin, times.astronomicalTwilightEnd)

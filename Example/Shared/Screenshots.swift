@@ -10,7 +10,7 @@ import SwiftUI
 enum ScreenshotScene: String {
     /// Apple Watch: Istanbul's sun arc with the sun now, the phase and the next event countdown.
     case arc
-    /// Apple Watch: Istanbul's golden hour card, blue hour and twilight phases.
+    /// Apple Watch: Istanbul's golden hour card and twilight phases (the blue hour is further down).
     case golden
     /// iPhone: every city with today's sunrise, sunset, day length and phase.
     case cities

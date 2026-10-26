@@ -38,7 +38,7 @@ Captured by CI from the example app, *Daybreak*, on an Apple Watch and an iPhone
 
 | Watch: sun arc | Watch: golden hour |
 | :---: | :---: |
-| <img src="docs/screenshots/watch-arc.png" alt="Apple Watch: Istanbul's sun path over today with the sun at its current position, the light phase and a countdown to the next sun event" width="200"> | <img src="docs/screenshots/watch-golden.png" alt="Apple Watch: Istanbul's morning and evening golden hour card, the blue hour and the twilight times" width="200"> |
+| <img src="docs/screenshots/watch-arc.png" alt="Apple Watch: Istanbul's sun path over today with the sun at its current position, the light phase and a countdown to the next sun event" width="200"> | <img src="docs/screenshots/watch-golden.png" alt="Apple Watch: Istanbul's morning and evening golden hour card and the dawn and dusk times of each twilight phase" width="200"> |
 
 | iPhone: cities | iPhone: city detail |
 | :---: | :---: |
@@ -223,7 +223,7 @@ let client = SunriseSunsetClient(configuration: SunriseSunsetConfiguration(
 
 The `Example` folder contains *Daybreak*, built with SunriseKit and SunriseUI, for a fixed list of real cities with their real coordinates and time zones (Istanbul, Reykjavik, Tokyo, New York, Cape Town and Tromsø), plus the device's location if you allow it:
 
-- **Apple Watch**: vertical pages for the sun arc (the sun where it is now, the phase and a countdown to the next event), the golden hour card with the blue hour and the twilights, and a city picker with *Use My Location*.
+- **Apple Watch**: vertical pages for the sun arc (the sun where it is now, the phase and a countdown to the next event), the golden hour card with the twilight phases and the blue hour, and a city picker with *Use My Location*.
 - **iPhone**: the cities with today's sunrise, sunset, day length, phase and a timeline bar, and a detail screen with the arc, the next event, golden and blue hours, twilights and the next seven days with day length changes.
 
 The project uses [XcodeGen](https://github.com/yonaskolb/XcodeGen) so no project file has to live in the repo:
